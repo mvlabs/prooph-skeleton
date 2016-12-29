@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-docker run --rm -ti --volume "$(pwd):/app:rw" -u $(id -u):$(id -g) --network prooph-skeleton_default prooph/php:7.1-cli php bin/migrations.php  "$@"
+docker run --rm -ti --volume "$(pwd):/app:rw" -u $(id -u):$(id -g) --network proophskeleton_default prooph/php:7.1-cli php bin/migrations.php  "$@"
