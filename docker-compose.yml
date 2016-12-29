@@ -1,0 +1,38 @@
+version: '2'
+services:
+  nginx:
+    image: prooph/nginx:www
+    ports:
+      - 8080:80
+      - 443:443
+    volumes_from:
+      - data
+    networks:
+      - default
+
+  php:
+    image: prooph/php:7.1-fpm
+    volumes_from:
+      - data
+    networks:
+      - default
+
+  data:
+    image: debian:jessie
+    volumes:
+      - .:/var/www
+    networks:
+      - default
+
+  postgres:
+    image: postgres:9.6
+    environment:
+      - POSTGRES_USER=mvlabs
+      - POSTGRES_PASSWORD=mvlabs
+      - POSTGRES_DB=mvlabs
+    ports:
+      - 5432:5432
+    networks:
+      - default
+networks:
+  default:

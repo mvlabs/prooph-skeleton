@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+docker run --rm -it -v $(pwd):/app -u $(id -u):$(id -g) -e "COMPOSER_HOME=/tmp/composer" prooph/composer:7.1 "$@"

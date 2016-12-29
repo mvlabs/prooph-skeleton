@@ -1,0 +1,44 @@
+{
+    "name": "mvlabs/prooph-skeleton",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Marco Perone",
+            "email": "m.perone@mvlabs.it"
+        },
+        {
+            "name": "Stefano Valle",
+            "email": "s.valle@mvassociati.it"
+        }
+    ],
+    "require": {
+        "php": "7.1",
+        "prooph/event-sourcing": "^4.0",
+        "prooph/service-bus": "^5.2",
+        "prooph/event-store": "^6.5",
+        "zendframework/zend-servicemanager": "^3.2",
+        "zendframework/zend-stdlib": "^3.1",
+        "zendframework/zend-expressive": "^1.0",
+        "zendframework/zend-expressive-fastroute": "^1.3",
+        "filp/whoops": "^2.1",
+        "prooph/event-store-bus-bridge": "^2.0",
+        "prooph/event-store-doctrine-adapter": "^3.3",
+        "ramsey/uuid": "2.9",
+        "doctrine/migrations": "^1.5",
+        "roave/security-advisories": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "MVLabs\\ProophSkeleton\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MVLabs\\ProophSkeletonTest\\": ["test/unit/", "test/"]
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7",
+        "mockery/mockery": "^0.9.7"
+    }
+}
