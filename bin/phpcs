@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+docker run --rm -ti --volume "$(pwd):/app:rw" -u $(id -u):$(id -g) prooph/php:7.1-cli php vendor/bin/phpcs "$@"

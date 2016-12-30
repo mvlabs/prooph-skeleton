@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<ruleset name="MVLabs/ProophSkeleton">
+    <description>MVLabs Prooph Skeleton</description>
+    <rule ref="./vendor/mvlabs/coding-standard/MVLabs"/>
+</ruleset>

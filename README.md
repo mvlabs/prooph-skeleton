@@ -36,6 +36,12 @@ Run the tests with
 bin/test
 ```
 
+## Coding standards
+
+```bash
+bin/phpcs src
+```
+
 ## Async
 
 The `data` folder must be writable.
