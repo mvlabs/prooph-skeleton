@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-docker run --rm -it -v $(pwd):/app -u $(id -u):$(id -g) prooph/php:7.1-cli php vendor/bin/phpunit
+docker run --rm -i -v $(pwd):/app -u $(id -u):$(id -g) prooph/php:7.1-cli php vendor/bin/phpunit
