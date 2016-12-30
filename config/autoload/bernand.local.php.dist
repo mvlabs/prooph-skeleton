@@ -1,0 +1,15 @@
+<?php
+
+declare(strict_types = 1);
+
+return [
+    'bernard' => [
+        'flat_file_path' => __DIR__ . '/../../data/bernard',
+        'event_dispatcher_listeners' => [
+            \Bernard\EventListener\ErrorLogSubscriber::class, // logs an error for every rejected message
+            \Bernard\EventListener\FailureSubscriber::class, // produce a 'failed' message for every rejected message
+            \Bernard\EventListener\LoggerSubscriber::class // logs dispatcher activity
+        ],
+        'subscriber_log' => __DIR__ . '/../../data/subscriber.log'
+    ]
+];

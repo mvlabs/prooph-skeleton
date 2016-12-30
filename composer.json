@@ -25,7 +25,10 @@
         "prooph/event-store-doctrine-adapter": "^3.3",
         "ramsey/uuid": "2.9",
         "doctrine/migrations": "^1.5",
-        "roave/security-advisories": "dev-master"
+        "roave/security-advisories": "dev-master",
+        "bernard/bernard": "1.0.*@dev",
+        "prooph/psb-bernard-producer": "^2.0",
+        "monolog/monolog": "^1.22"
     },
     "autoload": {
         "psr-4": {
