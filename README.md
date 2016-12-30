@@ -36,3 +36,9 @@ Run the tests with
 bin/test
 ```
 
+## Async
+
+The `data` folder must be writable.
+
+Remember to run the `bin/consumer` to consume the queued commands
+

@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+docker run --rm -ti --volume "$(pwd):/app:rw" --network proophskeleton_default prooph/php:7.1-cli php worker/consumer.php

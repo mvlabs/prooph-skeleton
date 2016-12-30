@@ -10,7 +10,8 @@ return [
             \Bernard\EventListener\ErrorLogSubscriber::class => \MVLabs\ProophSkeleton\Factory\EventListener\ErrorLogSubscriberFactory::class,
             \Bernard\EventListener\FailureSubscriber::class => \MVLabs\ProophSkeleton\Factory\EventListener\FailureSubscriberFactory::class,
             \Bernard\EventListener\LoggerSubscriber::class => \MVLabs\ProophSkeleton\Factory\EventListener\LoggerSubscriberFactory::class,
-            \Psr\Log\LoggerInterface::class => \MVLabs\ProophSkeleton\Factory\LoggerFactory::class
+            \Psr\Log\LoggerInterface::class => \MVLabs\ProophSkeleton\Factory\LoggerFactory::class,
+            \Bernard\Consumer::class => \MVLabs\ProophSkeleton\Factory\AsyncCommandBusConsumerFactory::class,
         ]
     ]
 ];

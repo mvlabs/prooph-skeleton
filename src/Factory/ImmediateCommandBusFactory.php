@@ -17,6 +17,8 @@ use Prooph\ServiceBus\Plugin\ServiceLocatorPlugin;
 
 final class ImmediateCommandBusFactory
 {
+    const SERVICE_NAME = 'ImmediateCommandBus';
+
     public function __invoke(ContainerInterface $container): CommandBus
     {
         $commandBus = new CommandBus();

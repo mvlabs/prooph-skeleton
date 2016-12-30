@@ -15,22 +15,15 @@ use Symfony\Component\EventDispatcher\EventDispatcher;
 
 final class AsyncCommandBusFactory
 {
+    const SERVICE_NAME = 'AsyncCommandBus';
+
     public function __invoke(ContainerInterface $container): CommandBus
     {
         $commandBus = new CommandBus();
 
-        $eventDispatcher = new EventDispatcher();
-
-        $config = $container->get('config');
-        $eventDispatcherListeners = $config['bernard']['event_dispatcher_listeners'] ?? [];
-
-        foreach ($eventDispatcherListeners as $listener) {
-            $eventDispatcher->addSubscriber($container->get($listener));
-        }
-
         $producer = new Producer(
             $container->get(QueueFactory::class),
-            $eventDispatcher
+            $container->get(EventDispatcher::class)
         );
 
         $messageProducer = new BernardMessageProducer(
