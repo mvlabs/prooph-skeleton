@@ -3,10 +3,12 @@
 namespace MVLabs\ProophSkeleton\Action;
 
 use MVLabs\ProophSkeleton\Domain\Command\ACommand;
+use MVLabs\ProophSkeleton\Infrastructure\Reader\Reader;
 use Prooph\ServiceBus\CommandBus;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Zend\Diactoros\Response\EmptyResponse;
+use Zend\Diactoros\Response\JsonResponse;
 use Zend\Diactoros\Response\TextResponse;
 
 final class Test
@@ -16,9 +18,17 @@ final class Test
      */
     private $commandBus;
 
-    public function __construct(CommandBus $commandBus)
-    {
+    /**
+     * @var Reader
+     */
+    private $reader;
+
+    public function __construct(
+        CommandBus $commandBus,
+        Reader $reader
+    ) {
         $this->commandBus = $commandBus;
+        $this->reader = $reader;
     }
 
     public function __invoke(
@@ -29,7 +39,7 @@ final class Test
         $params = $request->getQueryParams();
 
         if (!array_key_exists('param', $params)) {
-            return new EmptyResponse(404);
+            return $this->showData();
         }
 
         $param = $params['param'];
@@ -37,5 +47,12 @@ final class Test
         $this->commandBus->dispatch(ACommand::fromParameter($param));
 
         return new TextResponse('hello!');
+    }
+
+    private function showData() : ResponseInterface
+    {
+        $data = $this->reader->retrieveAllData();
+
+        return new JsonResponse($data);
     }
 }
