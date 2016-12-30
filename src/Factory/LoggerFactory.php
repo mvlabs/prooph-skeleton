@@ -17,7 +17,9 @@ final class LoggerFactory
         $config = $container->get('config');
 
         if (!isset($config['bernard']['subscriber_log'])) {
-            throw new ServiceNotCreatedException('Unable to create the Logger service. Please set the bernard/subscriber_log key in configuration');
+            $message = 'Unable to create the Logger service. ' .
+                'Please set the bernard/subscriber_log key in configuration';
+            throw new ServiceNotCreatedException($message);
         }
 
         return new Logger(
