@@ -18,6 +18,7 @@ use MVLabs\ProophSkeleton\Factory\Infrastructure\EventListener\AnEventListenerFa
 use MVLabs\ProophSkeleton\Factory\Infrastructure\Repository\EventSourcedRepositoryFactory;
 use Prooph\EventStore\EventStore;
 use Prooph\ServiceBus\EventBus;
+use Rhumsaa\Uuid\Uuid;
 use Zend\ServiceManager\ServiceManager;
 
 final class ACommandTest extends \PHPUnit_Framework_TestCase
@@ -46,6 +47,11 @@ final class ACommandTest extends \PHPUnit_Framework_TestCase
                             $record['version'] === 1;
                     }));
                     $connection->shouldReceive('commit');
+
+                    // INSERT DATA IN PROJECTION
+                    $connection->shouldReceive('insert')->with('projection', \Mockery::on(function (array $record) {
+                        return Uuid::isValid($record['data']);
+                    }));
 
                     return $connection;
                 },
