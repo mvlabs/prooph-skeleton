@@ -15,7 +15,7 @@ final class AnEvent extends AggregateChanged
         return self::occur((string) $id);
     }
 
-    public function anAggregateId()
+    public function anAggregateId() : AnAggregateId
     {
         return AnAggregateId::fromString($this->aggregateId());
     }
